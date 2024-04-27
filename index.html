@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health and fitness</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <img src="images/logo-running" alt="">
+        <h1>health fit</h1>
+    </header>
+
+    <main>
+        <section class="dashboard-container">
+            <h2>dashboard</h2>
+            <a href="#" id="link" onclick="fetchDownload()">Download</a>
+            <section id="dashboard">
+                <div class="container">
+                    <img src="images/steps-img" alt="image">
+                    <h3>steps</h3>
+                    <h1 id="stepsValue">0</h1>
+                    <p>today</p>
+
+                </div>
+                <div class="container">
+                    <img src="images/calories" alt="image">
+                    <h3>calories</h3>
+                    <h1 id="caloriesValue">0</h1>
+                    <p>today</p>
+
+                </div>
+                <div class="container">
+                    <img class="sleep-img" src="images/sleep" alt="image">
+                    <h3>sleep</h3>
+                    <h1 id="sleepValue">0 hours</h1>
+                    <p>today</p>
+
+                </div>
+                <div class="container">
+                    <img src="images/distance" alt="image">
+                    <h3>distance</h3>
+                    <h1 id="distanceValue">0 km</h1>
+                    <p>today</p>
+
+                </div>
+            </section>
+            <button onclick="fetchData()">Sync</button>
+        </section>
+
+
+
+        <section class="trent-analysis">
+            <div class="steps-chart">
+                <h1>number of steps in last 7 days</h1>
+                <canvas id="stepsChart">
+
+                </canvas>
+            </div>
+            <div class="calories-chart">
+                <h1>calories burned in last 7 days</h1>
+                <canvas id="caloriesChart">
+
+                </canvas>
+            </div>
+            <div class="sleep-chart">
+                <h1>sleep in last 7 days(hours)</h1>
+                <canvas id="sleepChart">
+
+                </canvas>
+            </div>
+            <div class="distance-chart">
+                <h1>distance covered in last 7 days(km)</h1>
+                <canvas id="distanceChart">
+
+                </canvas>
+            </div>
+        </section>
+
+        <section class="goals">
+
+            <h1>Goals</h1>
+            <h2>Activity</h2>
+
+            <div class="goals-container">
+
+                <div class="steps-goal-cont">
+                    <div><label for="">Steps</label> <input id="stepsGoalInput" type="number"></div>
+                    <button onclick="setStepGoal()">Set goal</button>
+                    <p id="stepGoalDisplay"></p>
+
+                    <!-- progress bar circle -->
+                    <div class="progress">
+                        <div class="outer">
+                            <div class="inner">
+                                <div id="number">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                            <defs>
+                                <linearGradient id="GradientColor">
+                                    <stop offset="0%" stop-color="#e91e63" />
+                                    <stop offset="100%" stop-color="#673ab7" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <!-- end -->
+                    <div>
+                        <p style="display: inline;" id="steps-goals-p"></p>
+                        <span>steps</span>
+                    </div>
+                </div>
+
+                <div class="calories-goal-cont">
+                    <div><label for="">Calories</label> <input id="caloriesGoalInput" type="number"></div>
+                    <button onclick="setCaloriesGoal()">Set goal</button>
+                    <p id="caloriesGoalDisplay"></p>
+
+                    <!-- progress bar circle -->
+                    <div class="progress">
+                        <div class="outer">
+                            <div class="inner">
+                                <div id="number1">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                            <defs>
+                                <linearGradient id="GradientColor">
+                                    <stop offset="0%" stop-color="#e91e63" />
+                                    <stop offset="100%" stop-color="#673ab7" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <!-- end -->
+                    <div>
+                        <p style="display: inline;" id="calorie-goals-p"></p>
+                        <span>calories</span>
+                    </div>
+                </div>
+
+                <div class="sleep-goal-cont">
+                    <div><label for="">Sleep</label> <input id="sleepGoalInput" type="number"></div>
+                    <button onclick="setSleepGoal()">Set goal</button>
+                    <p id="sleepGoalDisplay"></p>
+
+                    <!-- progress bar circle -->
+                    <div class="progress">
+                        <div class="outer">
+                            <div class="inner">
+                                <div id="number2">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                            <defs>
+                                <linearGradient id="GradientColor">
+                                    <stop offset="0%" stop-color="#e91e63" />
+                                    <stop offset="100%" stop-color="#673ab7" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <!-- end -->
+                    <div>
+                        <p style="display: inline;" id="sleep-goals-p"></p>
+                        <span>hours</span>
+                    </div>
+                </div>
+
+                <div class="distance-goal-cont">
+                    <div><label for="">Distance</label> <input id="distanceGoalInput" type="number"></div>
+                    <button onclick="setDistanceGoal()">Set goal</button>
+                    <p id="distanceGoalDisplay"></p>
+
+                    <!-- progress bar circle -->
+                    <div class="progress">
+                        <div class="outer">
+                            <div class="inner">
+                                <div id="number3">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                            <defs>
+                                <linearGradient id="GradientColor">
+                                    <stop offset="0%" stop-color="#e91e63" />
+                                    <stop offset="100%" stop-color="#673ab7" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <!-- end -->
+                    <div>
+                        <p style="display: inline;" id="distance-goals-p"></p>
+                        <span>km</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <ul class="social-media">
+            <li><a href="#">
+                    <i class="fa-brands fa-facebook-f fa-xl"></i>
+                </a></li>
+
+            <li><a href="#">
+                    <i class="fa-brands fa-twitter fa-xl"></i>
+                </a></li>
+
+            <li><a href="#">
+                    <i class="fa-brands fa-instagram fa-xl"></i>
+                </a></li>
+
+            <li><a href="#">
+                    <i class="fa-brands fa-youtube fa-xl"></i>
+                </a></li>
+        </ul>
+
+        <hr>
+
+        <p>©HealthFit.SouravRamesh</p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

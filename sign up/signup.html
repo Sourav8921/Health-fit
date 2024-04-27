@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Fit Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="form-container">
+        <img src="/images/logo-running" alt="">
+        <h1>SIGN UP</h1>
+
+    <form action="/login/login.html" onsubmit="return validateAll()" >
+        <div class="grid">
+        <div>
+            <label for="">Enter name</label><br>
+            <input type="text" placeholder="name" id="nameInput" maxlength="15"><br>
+            <p id="nameMsg"></p>
+        </div>
+        <div>
+            <label for="">Enter email</label><br>
+            <input type="text" placeholder="example@gmail.com" id="emailInput" maxlength="20"><br>
+            <p id="emailMsg"></p>
+        </div>
+        <div class="pass-cont">
+            <label for="">Enter password</label><br>
+            <input type="password" placeholder="password" id="passInput" maxlength="14"><i class="fa-solid fa-eye" id="show-pass"></i><br>
+            <p id="passMsg"></p>
+        </div>
+        <div class="confirmPass-cont">
+            <label for="">Confirm password</label><br>
+            <input type="password" placeholder="Confirm password" id="confirmInput" maxlength="14"><i class="fa-solid fa-eye" id="show-pass-confirm"></i><br>
+            <p id="confirmMsg"></p>
+        </div>
+        <div>
+            <label for="">Enter phone number</label><br>
+            <input type="text" placeholder="Phone" id="phoneInput" maxlength="10"><br>
+            <p id="phoneMsg"></p>
+         </div>   
+        <div>
+            <label for="">Date of birth</label><br>
+            <input type="date"  id="dobInput"><br>
+            <p id="dobMsg"></p>
+        </div>
+        </div>
+            <input type="submit" value="Submit" id="submitButton">
+            <p id="countdown"></p>
+    </form>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
+</html>

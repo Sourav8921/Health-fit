@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login In - Health Fit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            place-items: center;
+
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+        }
+
+        .pass-cont {
+            position: relative;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        input {
+            width: 350px;
+            height: 50px;
+            border-radius: 5px;
+            font-size: 20px;
+            border: 2px solid #ccc;
+        }
+
+        button {
+            width: 350px;
+            height: 50px;
+            border-radius: 5px;
+            color: white;
+            background-color: #0d6efd;
+            font-size: 20px;
+        }
+
+        button:hover {
+            background-color: #053b8d;
+        }
+
+        #show-pass {
+            position: absolute;
+            top: 35%;
+            right: 6%;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <img src="/images/logo-running" alt="logo">
+        <h1>Please login</h1>
+        <input oninput="validateEmail()" maxlength="20" style="display: inline;" type="text" placeholder="Email address"
+            id="email">
+        <p id="emailMsg"></p>
+        <div class="pass-cont">
+            <input oninput="validatePass()" maxlength="14" type="password" placeholder="Password" id="pass"><i class="fa-solid fa-eye" id="show-pass"></i>
+        </div>
+        <p id="passMsg"></p>
+        <p>Don't have an account? <a href="/sign up/signup.html">Sign up</a></p>
+        <button onclick="login()">Sign in</button>
+    </div>
+
+    <script>
+        const emailInput = document.getElementById('email');
+        const passInput = document.getElementById('pass');
+        const emailMsg = document.getElementById('emailMsg');
+        const passMsg = document.getElementById('passMsg');
+
+
+        function validateEmail() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,3}$/;
+
+            let emailValue = emailInput.value.trim();
+
+            if (emailValue === "") {
+                emailMsg.textContent = "Email cannot be empty";
+                emailMsg.style.color = "red";
+                emailInput.style.border = "solid 3px red";
+                return false;
+            }
+
+            if (!emailRegex.test(emailValue)) {
+                emailMsg.textContent = "Please enter a valid email address";
+                emailMsg.style.color = "red";
+                emailInput.style.border = "solid 3px red";
+                return false;
+            }
+
+            // If no error is found, display success message
+            emailMsg.textContent = "Email is valid ✅";
+            emailMsg.style.color = "green";
+            emailInput.style.border = "solid 3px green";
+            return true;
+        }
+
+        function login() {
+            let emailValue = emailInput.value;
+            let passValue = passInput.value;
+
+            let email = localStorage.getItem("email");
+            let pass = localStorage.getItem("password");
+
+            if (emailValue == email && passValue == pass) {
+                window.location.href = "/index.html";
+            } else {
+                alert("Email and password is incorrect");
+            }
+
+        }
+
+        function validatePass() {
+            let passValue = passInput.value.trim();
+
+            let hasUpperCase = /[A-Z]/.test(passValue);
+            let hasLowerCase = /[a-z]/.test(passValue);
+            let hasNumber = /[0-9]/.test(passValue);
+            let hasSpecialChar = /[!@#$%^&*]/.test(passValue);
+
+            if (passValue.length < 8) {
+                passMsg.textContent = "Password should be at least 8 characters long";
+                passMsg.style.color = "red";
+                passInput.style.border = "solid 3px red";
+                return false;
+            }
+
+            if (!hasUpperCase) {
+                passMsg.textContent = "Password must contain at least one uppercase letter";
+                passMsg.style.color = "red";
+                passInput.style.border = "solid 3px red";
+                return false;
+            }
+
+            if (!hasLowerCase) {
+                passMsg.textContent = "Password must contain at least one lowercase letter";
+                passMsg.style.color = "red";
+                passInput.style.border = "solid 3px red";
+                return false;
+            }
+
+            if (!hasNumber) {
+                passMsg.textContent = "Password must contain at least one number";
+                passMsg.style.color = "red";
+                passInput.style.border = "solid 3px red";
+                return false;
+            }
+
+            if (!hasSpecialChar) {
+                passMsg.textContent = "Password must contain at least one special character";
+                passMsg.style.color = "red";
+                passInput.style.border = "solid 3px red";
+                return false;
+            }
+
+            // If no error is found, display success message
+            passMsg.textContent = "Password is valid ✅";
+            passMsg.style.color = "green";
+            passInput.style.border = "solid 3px green";
+            return true;
+        }
+
+        const showPass = document.getElementById('show-pass');
+        showPass.addEventListener('click', function () {
+            showPass.classList.toggle("fa-eye-slash");
+            showPass.classList.toggle("fa-eye");
+            const type = passInput.getAttribute("type") === "password" ? "text" : "password";
+            passInput.setAttribute('type', type);
+        })
+
+    </script>
+</body>
+
+</html>

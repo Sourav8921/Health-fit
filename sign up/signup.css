@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    /* background-image: url(fitness-elements-with-space-middle_23-2147692037.webp); */
+
+    background-position: center center;
+    background-size: cover;
+    font-family: 'Open Sans',sans-serif  ;
+}
+.form-container{
+    background-color: #ccc;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;  
+    box-shadow: 10px 10px 30px 10px ;  
+    /* background: transparent; */
+    /* backdrop-filter: blur(1px); */
+    
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.grid div{
+    width: 370px;
+    height: 135px;
+}
+@media(max-width:650px){
+    .grid{
+        grid-template-columns: 1fr;
+    }
+}
+.form-container h1{
+    text-transform:capitalize;
+    color:black;
+    margin-bottom: 20px;
+    
+}
+.form-container img{
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+input{
+    font-size: 20px;
+    text-transform: capitalize;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    color: black;
+    margin: 10px 0;
+}
+::placeholder{
+    color: gray;
+}
+label{
+    font-size: 20px;
+    color:black ;
+}
+input[type="submit"]{
+    background-color: #0d6efd;
+    color: white;
+    width: 260px;
+    font-weight: 500;
+}
+input[type="submit"]:hover{
+    color:white;
+    background-color: #053b8d;
+}
+#emailInput{
+    text-transform: lowercase;
+}
+
+p{
+    margin-bottom: 15px;
+}
+.pass-cont{
+    position: relative;
+}
+#show-pass{
+    position: absolute;
+    top: 37%;
+    right: 18%;
+    cursor: pointer;
+    color: rgb(101, 96, 96);
+}
+#show-pass-confirm{
+    position: absolute;
+    top: 37%;
+    right: 18%;
+    cursor: pointer;
+    color: rgb(101, 96, 96);
+}
+.confirmPass-cont{
+    position: relative;
+}
+
